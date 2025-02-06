@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netflix-clone
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: netflix-clone.local
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: netflix-clone
+                port:
+                  number: 3000
